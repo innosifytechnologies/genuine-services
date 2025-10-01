@@ -18,7 +18,7 @@ const Service = ({ dir ,path,info,title }: { dir: string;path:string;info:string
     >
       {" "}
       <div className="Img sm:w-150 w-90  h-90 sm:h-120 bg-gray-300 overflow-hidden">
-        <video ref={videoRef}width="600" autoPlay loop className="w-full h-full object-cover ">
+        <video ref={videoRef}width="600" autoPlay loop muted className="w-full h-full object-cover ">
           <source src={path} type="video/mp4" />
         </video>
       </div>
