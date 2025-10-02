@@ -19,7 +19,7 @@ export default function ContactPage() {
   const sendToWhatsApp = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const phoneNumber = "919876543210"; // 🔹 Replace with your WhatsApp number
+    const phoneNumber = "918143413999"; // 🔹 Replace with your WhatsApp number
     const text = `📩 New Contact Message\n\n👤 Name: ${form.name}\n📧 Email: ${form.email}\n📱 Phone: ${form.phone}\n💬 Message: ${form.message}`;
 
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;

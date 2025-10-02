@@ -40,7 +40,7 @@ const OurServices = () => {
               From flawless painting finishes to creative POP ceilings and walls, we add style and durability to every space, reflecting your unique vision.
             </p>
             <p className="w-10 h-1 absolute bottom-10 right-5">
-              <GoArrowRight size={25} className="w-full h-full"/>
+              <GoArrowRight size={25} />
             </p>{" "}
           </div>
         </div></Link> 

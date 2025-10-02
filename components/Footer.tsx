@@ -27,10 +27,12 @@ const Footer = () => {
         <div className="section w-80 flex flex-col gap-y-5">
                 <h2 className="text-2xl font-bold">Contact</h2>
             <ul className="flex flex-col gap-y-2">
-                <li>Kuppam, Chittoor, Andhra Pradesh, India</li>
-                <li>support@genuineservice.com</li>
-                <li>9676906525</li>
-                <li>9676906525</li>
+                
+                <li>+91 85550 88176</li>
+                <li>+91 81434 13999</li>
+                 <li>support@genuineservice.com</li>
+                <li>#2-6-8 Ashita Comolex, 3rd floor Near Kokila Centre, Kakinada, Andhra Pradesh, India</li>
+               
             </ul>
         </div>
     </div>

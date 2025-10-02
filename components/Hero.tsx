@@ -3,8 +3,20 @@
 import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
 
+import building from "../public/images/buildingContruction.jpg";
+import interior from "../public/images/interiorDesign.jpg";
+import pop from "../public/images/popWorks.jpg";
+import painting from "../public/images/paintingWorks.jpg";
+import heroImg from '../public/images/hero.svg'
+import Image from "next/image";
+
 const Hero = () => {
-  const titles = ["Interior Design ", "Painting Works ", "Building Construction", "POP Works ", "Outdoor Design "];
+  const titles = [
+    "Interior Design ",
+    "Painting Works ",
+    "Building Construction",
+    "POP Works "
+  ];
   const typingSpeed = 150;
   const deletingSpeed = 100;
   const pauseTime = 1500;
@@ -19,6 +31,10 @@ const Hero = () => {
   const [projectCount, setProjectCount] = useState(0);
   const [clientCount, setClientCount] = useState(0);
   const [styleCount, setStyleCount] = useState(0);
+
+  // For background image transition
+  const images = [interior.src, painting.src, building.src, pop.src];
+  const [currentImage, setCurrentImage] = useState(images[0]);
 
   // Typing effect
   useEffect(() => {
@@ -36,10 +52,15 @@ const Hero = () => {
     }
 
     if (!isDeleting && text === currentTitle) {
+      // pause then start deleting
       timer = setTimeout(() => setIsDeleting(true), pauseTime);
     } else if (isDeleting && text === "") {
       setIsDeleting(false);
-      setTitleIndex((prev) => (prev + 1) % titles.length);
+      setTitleIndex((prev) => {
+        const newIndex = (prev + 1) % titles.length;
+        setCurrentImage(images[newIndex % images.length]); // change image
+        return newIndex;
+      });
     }
 
     return () => clearTimeout(timer);
@@ -112,7 +133,15 @@ const Hero = () => {
           </p>
         </div>
 
-        <div className="sm:w-100 w-85 h-85 bg-gray-500"></div>
+        {/* Image with fade effect */}
+        <div className="relative sm:w-100 w-85 h-85 overflow-hidden rounded-xl shadow-lg">
+          <img
+            key={currentImage}
+            src={currentImage}
+            alt="hero"
+            className="absolute inset-0 w-full h-full object-cover opacity-0 animate-fadeIn"
+          />
+        </div>
       </div>
 
       <div
@@ -120,9 +149,11 @@ const Hero = () => {
         className="section sm:flex-row flex-col flex items-center justify-between sm:px-10 sm:py-5 w-full gap-10"
       >
         <div className="sm:w-150 w-full flex items-center flex-col gap-y-5">
-         <Link href={'/contactUs'}> <button className="bg-black text-white px-8 py-3 m-7 w-fit rounded-xl hover:bg-orange-600 translate">
-            Start Project
-          </button></Link>
+          <Link href={"/contactUs"}>
+            <button className="bg-black text-white px-8 py-3 m-7 w-fit rounded-xl hover:bg-orange-600 translate">
+              Start Project
+            </button>
+          </Link>
           <ul className="flex gap-x-10 sm:py-10 scale-[0.8]">
             <li className="flex flex-col items-center gap-y-3">
               <p className="text-5xl">{projectCount}+</p>
@@ -138,7 +169,11 @@ const Hero = () => {
             </li>
           </ul>
         </div>
-        <div className="sm:w-200 w-90 h-40 sm:h-80 bg-gray-500"></div>
+
+        {/* Another image placeholder */}
+        <div className="sm:w-250 w-90 h-50  sm:h-100 overflow-hidden rounded-2xl">
+          <Image src={heroImg} alt="" className="w-full height"/>  
+        </div>
       </div>
 
       <style jsx>{`
@@ -150,12 +185,28 @@ const Hero = () => {
         }
 
         @keyframes blink {
-          0%, 50%, 100% {
+          0%,
+          50%,
+          100% {
             opacity: 1;
           }
-          25%, 75% {
+          25%,
+          75% {
             opacity: 0;
           }
+        }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        .animate-fadeIn {
+          animation: fadeIn 1.2s ease-in-out forwards;
         }
       `}</style>
     </div>
