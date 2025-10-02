@@ -134,7 +134,7 @@ const Hero = () => {
         </div>
 
         {/* Image with fade effect */}
-        <div className="relative sm:w-100 w-85 h-85 overflow-hidden rounded-xl shadow-lg">
+        <div className="relative sm:w-150 sm:h-90 w-85 h-85 overflow-hidden rounded-xl shadow-lg">
           <img
             key={currentImage}
             src={currentImage}

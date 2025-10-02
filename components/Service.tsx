@@ -27,22 +27,22 @@ const Service = ({
 
   return (
     <div
-      className={`service flex w-full flex-col items-center justify-center gap-x-5 ${directionClass}`}
+      className={`service flex w-full flex-col items-center justify-center gap-x-5 py-10 ${directionClass}`}
     >
-      <div className="Img sm:w-150 w-90 h-90 sm:h-120 bg-gray-300 overflow-hidden">
+      <div className="Img sm:w-150 w-90 h-90 sm:h-120 overflow-hidden">
         <video
           ref={videoRef}
           width="600"
           autoPlay
           loop
           muted
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover rounded-xl"
         >
           <source src={path} type="video/mp4" />
         </video>
       </div>
 
-      <div className="flex flex-col sm:w-200 w-full p-5 gap-5">
+      <div className="flex flex-col sm:w-200 w-full p-5 gap-15">
         <div className="flex flex-col gap-y-5">
           <h2 className="text-3xl">{title}</h2>
           <p className="sm:text-start text-center text-gray-500">{info}</p>
@@ -55,7 +55,7 @@ const Service = ({
                 src={item}
                 alt={`${title} image ${index}`}
                 key={index}
-                height={200}
+                height={250}
                 className="rounded-lg object-cover"
               />
             ))
